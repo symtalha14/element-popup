@@ -18,213 +18,214 @@
 
     <div class="container-fluid"
         style="width: 100%;height:100vh;display: flex;flex-direction: column;align-items: center;">
-        <h1 class="h1">Element PopUp</h1>
+        <h1 style="font-weight: bolder;" class="h1">Element PopUp</h1>
         <p>Pop ups, Toasts, Snackbars, Cookie bars & more</p>
-        <p>Customization with up-to 10+ settings</p>
-        <div>
-            <table style="width: 550px;" class="table table-condensed">
+        <p>Customization with up-to 15+ settings</p>
+        <div class="table-responsive">
+            <table class="table table-condensed">
                 <thead>
                     <tr>
                         <th>Element</th>
                         <th>Animation</th>
                     </tr>
                 </thead>
-                <tr>
-                    <tbody>
-                        <tr>
-                            <td>
-                                Pop Up
-                            </td>
-                            <td>
-                                <div value="slide_up" class="btn-grp" id="popUp">
-                                    <button value="slide_up" class="btn btn-default btn-primary">Slide Up</button>
-                                    <button value="slide_down" class="btn btn-default">Slide Down</button>
-                                    <button value="scale" class="btn btn-default">Scale</button>
-                                </div>
-                            <td>
-                                <button onclick="tryElementPopup('popup')" class="btn btn-success">Try now</button>
-                            </td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Toast
-                            </td>
-                            <td>
-                                <div value="slide_up" class="btn-grp" id="toastBar">
-                                    <button value="slide_up" class="btn btn-default btn-primary">Slide Up</button>
-                                    <button value="slide_down" class="btn btn-default">Slide Down</button>
-                                    <button value="scale" class="btn btn-default">Scale</button>
-                                </div>
-                            </td>
-                            <td>
-                                <button onclick="tryElementPopup('toast')" class="btn btn-success">Try now</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Snackbar
-                            </td>
-                            <td>
-                                <div value="slide_up" class="btn-grp" id="snackBar">
-                                    <button value="slide_up" class="btn btn-default btn-primary">Slide Up</button>
-                                    <button value="slide_down" class="btn btn-default">Slide Down</button>
-                                    <button value="scale" class="btn btn-default">Scale</button>
-                                </div>
-                            </td>
-                            <td>
-                                <button onclick="tryElementPopup('snack-bar')" class="btn btn-success">Try now</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Cookie bar
-                            </td>
-                            <td>
-                                <div value="slide_up" class="btn-grp" id="cookieBar">
-                                    <button value="slide_up" class="btn btn-default btn-primary">Slide Up</button>
-                                    <button value="slide_down" class="btn btn-default">Slide Down</button>
-                                    <button value="scale" class="btn btn-default">Scale</button>
-                                </div>
-                            </td>
-                            <td>
-                                <button onclick="tryElementPopup('cookie-bar')" class="btn btn-success">Try now</button>
-                            </td>
-                        </tr>
+                <tbody>
+                    <tr>
+                    <tr>
+                        <td>
+                            Pop Up
+                        </td>
+                        <td>
+                            <div value="slide_up" class="btn-grp" id="popUp">
+                                <button value="slide_up" class="btn btn-default btn-primary">Slide Up</button>
+                                <button value="slide_down" class="btn btn-default">Slide Down</button>
+                                <button value="scale" class="btn btn-default">Scale</button>
+                            </div>
+                        <td>
+                            <button onclick="tryElementPopup('popup')" class="btn btn-success">Try now</button>
+                        </td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Toast
+                        </td>
+                        <td>
+                            <div value="slide_up" class="btn-grp" id="toastBar">
+                                <button value="slide_up" class="btn btn-default btn-primary">Slide Up</button>
+                                <button value="slide_down" class="btn btn-default">Slide Down</button>
+                                <button value="scale" class="btn btn-default">Scale</button>
+                            </div>
+                        </td>
+                        <td>
+                            <button onclick="tryElementPopup('toast')" class="btn btn-success">Try now</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Snackbar
+                        </td>
+                        <td>
+                            <div value="slide_up" class="btn-grp" id="snackBar">
+                                <button value="slide_up" class="btn btn-default btn-primary">Slide Up</button>
+                                <button value="slide_down" class="btn btn-default">Slide Down</button>
+                                <button value="scale" class="btn btn-default">Scale</button>
+                            </div>
+                        </td>
+                        <td>
+                            <button onclick="tryElementPopup('snack-bar')" class="btn btn-success">Try now</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Cookie bar
+                        </td>
+                        <td>
+                            <div value="slide_up" class="btn-grp" id="cookieBar">
+                                <button value="slide_up" class="btn btn-default btn-primary">Slide Up</button>
+                                <button value="slide_down" class="btn btn-default">Slide Down</button>
+                                <button value="scale" class="btn btn-default">Scale</button>
+                            </div>
+                        </td>
+                        <td>
+                            <button onclick="tryElementPopup('cookie-bar')" class="btn btn-success">Try now</button>
+                        </td>
+                    </tr>
 
-                </tr>
-                <tr>
-                    <td>
-                        Animation Speed
-                    </td>
-                    <td>
-                        <select id="animation-speed" style="width: 200px;">
-                            <option value="slow">Slow</option>
-                            <option selected value="medium">Medium</option>
-                            <option value="quick">Quick</option>
-                            <option value="instant">Instant</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Element Placement
-                    </td>
-                    <td>
-                        <select id="element-placement" style="width: 200px;">
-                            <option value="TOP_LEFT">
-                                Top Left
-                            </option>
-                            <option selected value="TOP_RIGHT">
-                                Top Right
-                            </option>
-                            <option value="BOTTOM_LEFT">
-                                Bottom Left
-                            </option>
-                            <option value="BOTTOM_RIGHT">
-                                Bottom Right
-                            </option>
-                            <option value="TOP_CENTER">
-                                Top Center
-                            </option>
-                            <option value="BOTTOM_CENTER">
-                                Bottom Center
-                            </option>
-                            <option value="CENTER">
-                                Center
-                            </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Main BG
-                    </td>
-                    <td>
-                        <input value="#ffffff" id="main-bg-color" style="width: 100px;" type="color" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Primary accent
-                    </td>
-                    <td>
-                        <input value="#83ffb3" id="primary-accent-color" style="width: 100px;" type="color" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Secondary accent
-                    </td>
-                    <td>
-                        <input value="lightblue" id="secondary-accent-color" style="width: 100px;" type="color" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Header font color
-                    </td>
-                    <td>
-                        <input value="#ffffff" id="header-font-color" style="width: 100px;" type="color" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Light shade color
-                    </td>
-                    <td>
-                        <input value="rgb(139, 139, 139)" id="light-shade-color" style="width: 100px;" type="color" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Content font color
-                    </td>
-                    <td>
-                        <input value="#3e3d3d" id="content-font-color" style="width: 100px;" type="color" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Toast Background
-                    </td>
-                    <td>
-                        <input value="#2d2929" id="toast-bg-color" style="width: 100px;" type="color" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Snackbar Background
-                    </td>
-                    <td>
-                        <input value="#2d2929" id="snackbar-bg-color" style="width: 100px;" type="color" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Snackbar content color
-                    </td>
-                    <td>
-                        <input value="#ffe7e7" id="snackbar-content-color" style="width: 100px;" type="color" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Snackbar button accent
-                    </td>
-                    <td>
-                        <input value="#83ffb3" id="snackbar-button-accent" style="width: 100px;" type="color" />
-                    </td>
-                </tr>
+                    </tr>
+                    <tr>
+                        <td>
+                            Animation Speed
+                        </td>
+                        <td>
+                            <select id="animation-speed" style="width: 200px;">
+                                <option value="slow">Slow</option>
+                                <option selected value="medium">Medium</option>
+                                <option value="quick">Quick</option>
+                                <option value="instant">Instant</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Element Placement
+                        </td>
+                        <td>
+                            <select id="element-placement" style="width: 200px;">
+                                <option value="TOP_LEFT">
+                                    Top Left
+                                </option>
+                                <option selected value="TOP_RIGHT">
+                                    Top Right
+                                </option>
+                                <option value="BOTTOM_LEFT">
+                                    Bottom Left
+                                </option>
+                                <option value="BOTTOM_RIGHT">
+                                    Bottom Right
+                                </option>
+                                <option value="TOP_CENTER">
+                                    Top Center
+                                </option>
+                                <option value="BOTTOM_CENTER">
+                                    Bottom Center
+                                </option>
+                                <option value="CENTER">
+                                    Center
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Main BG
+                        </td>
+                        <td>
+                            <input value="#ffffff" id="main-bg-color" style="width: 100px;" type="color" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Primary accent
+                        </td>
+                        <td>
+                            <input value="#83ffb3" id="primary-accent-color" style="width: 100px;" type="color" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Secondary accent
+                        </td>
+                        <td>
+                            <input value="lightblue" id="secondary-accent-color" style="width: 100px;" type="color" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Header font color
+                        </td>
+                        <td>
+                            <input value="#ffffff" id="header-font-color" style="width: 100px;" type="color" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Light shade color
+                        </td>
+                        <td>
+                            <input value="rgb(139, 139, 139)" id="light-shade-color" style="width: 100px;"
+                                type="color" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Content font color
+                        </td>
+                        <td>
+                            <input value="#3e3d3d" id="content-font-color" style="width: 100px;" type="color" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Toast Background
+                        </td>
+                        <td>
+                            <input value="#2d2929" id="toast-bg-color" style="width: 100px;" type="color" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Snackbar Background
+                        </td>
+                        <td>
+                            <input value="#2d2929" id="snackbar-bg-color" style="width: 100px;" type="color" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Snackbar content color
+                        </td>
+                        <td>
+                            <input value="#ffe7e7" id="snackbar-content-color" style="width: 100px;" type="color" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Snackbar button accent
+                        </td>
+                        <td>
+                            <input value="#83ffb3" id="snackbar-button-accent" style="width: 100px;" type="color" />
+                        </td>
+                    </tr>
 
-                <tr>
-                    <td>
-                        Rounded Corners
-                    </td>
-                    <td>
-                        <input value="#false" id="rounded-corners" style="width: 100px;" type="checkbox" />
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            Rounded Corners
+                        </td>
+                        <td>
+                            <input value="#false" id="rounded-corners" style="width: 100px;" type="checkbox" />
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

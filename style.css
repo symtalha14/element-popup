@@ -4,11 +4,22 @@ body {
 
 
 table tr td,
-table thead th{
+table thead th {
     text-align: center;
     vertical-align: middle !important;
     font-weight: bold;
     padding: 10px !important;
 }
 
+select{
+    padding: 10px;
+}
 
+input[type="color"]{
+    width: 30px !important;
+    height: 30px !important;
+}
+
+.table-responsive {
+    overflow-y: scroll !important;
+}
