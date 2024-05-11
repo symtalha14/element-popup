@@ -1,0 +1,434 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>Element Popup Documentation</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css"
+		media="screen, projection">
+	<style type="text/css" media="screen">
+		p,
+		table,
+		hr,
+		.box {
+			margin-bottom: 25px;
+		}
+
+		.box p {
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+
+
+<body>
+	<div class="container">
+
+		<h3 class="center alt">&ldquo;Element PopUp&rdquo; Documentation by &ldquo;Syed Mohammad Talha&rdquo; v1.0</h3>
+
+		<hr>
+
+		<h1 class="center">&ldquo;Element Popup Documentation&rdquo;</h1>
+
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+						Created: 11/05/2024<br>
+						By: Syed Mohammad Talha<br>
+						Email: <a href="mailto:smtalha582@gmail.com">smtalha582@gmail.com</a>
+					</strong>
+				</p>
+			</div><!-- end div .span-6 -->
+
+			<div class="span-12 last">
+				<p class="prepend-top append-0">Thank you for purchasing my plugin. If you have any questions that are
+					beyond the scope of this help file, please feel free to email via my user page contact form <a
+						href="http://themeforest.net/user/USERNAME">here</a>. Thanks so much!</p>
+			</div>
+		</div><!-- end div .borderTop -->
+
+		<hr>
+
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+			<li><a href="#htmlStructure">HTML Structure</a></li>
+			<li><a href="#cssFiles">CSS Files and Structure</a></li>
+
+			<li><a href="#javascript">JavaScript</a></li>
+			<li>
+				<a href="#javascript-1">Creating a popup</a>
+			</li>
+			<li>
+				<a href="#javascript-2">Configuring a popup</a>
+			</li>
+
+			<li><a href="#credits">Sources and Credits</a></li>
+
+		</ol>
+
+		<hr>
+
+		<h3 id="htmlStructure"><strong>A) HTML Structure</strong> - <a href="#toc">top</a></h3>
+		<p>
+			There is no requirement of adding code in between your HTML body. You just need to include the stylesheet
+			and javascript file as shown in the image below.
+		</p>
+
+		<img src="assets/images/script-placement.png" alt="HTML Structure" />
+
+		<p>
+			If the stylesheet doesn't reflect styles, make sure there is no style overriding the style in
+			<strong>elpopup.css</strong>.
+		</p>
+		<hr>
+
+		<h3 id="javascript"><strong>C) JavaScript</strong> - <a href="#toc">top</a></h3>
+
+		<p>Code which powers this plugin lies in the <strong>elpopup.min.js</strong> file.</p> Best part of this script
+		is that it doesn't rely on any additional 3rd party script like jQuery. This file contains all the keyframes
+		which are responsible for the animations involved.
+
+
+		<hr>
+
+		<h3 id="javascript-1"><strong>D) Creating a Popup Element</strong> - <a href="#toc">top</a></h3>
+
+		<p>
+			In order to create a Popup element, the following code has to be added to your main javascript file or in
+			between script tags in your HTML file, as shown below.
+		</p>
+		<pre>
+		<code style="color: blue;">
+
+window.onload = () => {
+
+	new PopupElement({
+		element: 'popup', content: {
+			"header_text": "Header Text goes here",
+			"body_text": "Content in body goes here"
+		}, settings: {
+			colors: {
+				"main_bg": '#ffffff',
+				"accent_color_primary": '#2d52a9',
+				"accent_color_secondary": '#d9d9d9',
+				"accent_color_light": '#666666',
+				"header_font_color": '#ffffff',
+				"content_color": '#3e3d3d',
+				"snackbar_content_color": '#ffe7e7',
+				"snackbar_content_bg": '#2d2929',
+				"button_accent_color": '#83ffb3',
+				"toast_bg": '#2d2929'
+			}, animation: {
+				enter: 'scale',
+				exit: 'scale',
+				speed: 'medium'
+			},
+			rounded_container: true,
+			placement: 'TOP_LEFT',
+			icon: "fa-check",
+			callback_success: () => {
+				// whatever you want to do if the popup was confirmed
+			},
+			callback_cancel: () => {
+				// whatever you want to do if the popup was cancelled
+			}
+		}
+	});
+}
+
+				</code>
+	</pre>
+		<strong>Class "PopupElement"</strong>
+		<p>
+			PopupElement class is the main class of this plugin. You need to create an instance of this class in order
+			to fire a popup. It returns a promise that you need to handle with a success and error callback respectively
+			(as explained in the subsequent points).
+		</p>
+		<code>
+			<pre>
+	new PopupElement({element:"", settings:{}, content:{}})
+	.then(success_data => {console.log(success_data)})
+	.catch(err=>console.log(err));
+			</pre>
+		</code>
+		<p>
+			<strong>"success_data"</strong> returned in the promise can be one of the following objects depending on the
+			element type (as explained in next point).<br />
+			If element is not a "snack-bar", <br />
+			<code>
+				<pre>
+		{
+			"confirmed":true
+		}
+				</pre>
+			</code><br />
+			If element is a "snack-bar", <br />
+			<code>
+				<pre>
+		{
+			"dismissed":true
+		}
+				</pre>
+			</code>
+		<p>
+			<strong>
+				"confirmed"
+			</strong> indicates whether the user has clicked on "Yes" in the popup that you showed. If the user clicks
+			on "No"/"Cancel", "confirmed" is returned as false.
+			<br /><br />
+			<strong>"dismissed"</strong> indicates whether the user tapped/clicked on the snackbar in order to close it.
+		</p>
+		</p>
+		<hr>
+		<strong>"element", "settings", & "content"</strong>
+		<p>These parameters are responsible for giving your popup the look and feel you wantm as well as the content
+			that goes inside them. Following is a breakdown of these parameters.</p><br />
+		<table>
+			<thead>
+				<th>Parameter</th>
+				<th>Description</th>
+				<th>Type</th>
+				<th>Possible values</th>
+			</thead>
+			<tr>
+				<td>
+					<strong>element</strong>
+				</td>
+				<td>
+					refers to the popup type that you want
+				</td>
+				<td>String</td>
+				<td>
+					<strong>"popup", "snack-bar", "toast", "cookie-bar"</strong>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<strong>settings</strong>
+				</td>
+				<td>
+					15+ configurations for your popup
+				</td>
+				<td>
+					JSON Object
+				</td>
+				<td>
+					It takes an object of parameters and values for different configurations like <strong>background,
+						font color, rounded borders, callbacks etc.</strong> A detailed discussion of these is in the
+					next section.
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<strong>content</strong>
+				</td>
+				<td>
+					the content which goes inside your popup
+				</td>
+				<td>
+					JSON Object
+				</td>
+				<td>
+					Parameter <strong>header_text</strong>: Text which goes in popup header.<br />
+					Parameter <strong>body_text</strong>: Text which goes in popup body/content.<br />
+					Parameter <strong>sb_expand_btn_text</strong>: Expand button label (default is "Show". This is for
+					snackbars only).<br />
+					Parameter <strong>primary_btn_text</strong>: Primary button label (default is "Yes").<br />
+					Parameter <strong>secondary_btn_text</strong>: Secondary button label (default is "No").<br />
+					Please note, "header_text" is ignored
+					in case of "toast" element.
+				</td>
+			</tr>
+
+		</table>
+		<h3 id="javascript-2"><strong>E) Configuring a Popup</strong> - <a href="#toc">top</a></h3>
+		<strong>Settings options</strong>
+		<p>
+			Please refer to the following table for all possible configurations.
+		</p>
+		<!-- 
+
+            "rounded_btn": false,
+            "rounded_container": false,
+            "animation": {
+                "enter": "slide_up",
+                "exit": "slide_down",
+                "speed": "medium"
+            },
+            "placement": "TOP_LEFT",
+            "callback_success": () => {
+                console.log("Success confirmation");
+            },
+            "callback_cancel": () => {
+                console.log("Cancel confirmation");
+            },
+            "callback_error": (err) => {
+                console.log(err);
+            },
+           
+            "snackbar_active": false,
+            "icon": "fa-bell"
+		 -->
+		<table>
+			<thead>
+				<th>Parameter</th>
+				<th>Description</th>
+				<th>Type</th>
+				<th>Possible values</th>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>rounded_btn</td>
+					<td>rounded borders for popup buttons</td>
+					<td>Boolean</td>
+					<td><strong>true</strong> or <strong>false</strong></td>
+				</tr>
+				<tr>
+					<td>rounded_container</td>
+					<td>rounded borders for popup container</td>
+					<td>Boolean</td>
+					<td><strong>true</strong> or <strong>false</strong></td>
+				</tr>
+				<tr>
+					<td>animation</td>
+					<td>set animation for the popup.</td>
+					<td>JSON Object</td>
+					<td>
+						Parameter <strong>enter</strong>: Enter animation ("slide_up", "slide_down" or "scale") <br />
+						Parameter <strong>exit</strong>: Exit animation ("slide_up", "slide_down" or "scale")<br />
+						Parameter <strong>speed</strong>: Speed of animation ("slow", "medium", "quick",
+						"instant")<br />
+					</td>
+				</tr>
+				<tr>
+					<td>placement</td>
+					<td>Position of the popup on page</td>
+					<td>String</td>
+					<td>
+						<strong>TOP_LEFT</strong>,
+						<strong>TOP_RIGHT</strong>,
+						<strong>BOTTOM_LEFT</strong>,
+						<strong>BOTTOM_RIGHT</strong>,
+						<strong>CENTER</strong>,
+						<strong>TOP_CENTER</strong>,
+						<strong>BOTTOM_CENTER</strong>
+					</td>
+				</tr>
+				<tr>
+					<td>callback_success</td>
+					<td>This function will be executed if the user confirms the popup.(Clicks on "Yes" for example)</td>
+					<td>function</td>
+					<td>
+						Any function that you want should be executed on confirmation
+					</td>
+				</tr>
+				<tr>
+					<td>callback_cancel</td>
+					<td>This function will be executed if the user cancels/dismisses the popup.(Clicks on "No" for
+						example)</td>
+					<td>function</td>
+					<td>
+						Any function that you want should be executed on cancellation
+					</td>
+				</tr>
+				<!-- 
+					 "colors": {
+                "main_bg": "white",
+                "accent_color_primary": "#83ffb3",
+                "accent_color_secondary": "lightblue",
+                "accent_color_light": "rgb(139, 139, 139)",
+                "header_font_color": "#ffffff",
+                "content_color": "#3e3d3d",
+                "snackbar_content_color": "#ffe7e7",
+                "snackbar_content_bg": "#2d2929",
+                "toast_bg": "#2d2929",
+                "snackbar_highlight_content_bg": "green",
+                "snackbar_highlight_content_color": "#ffffff",
+                "button_accent_color": "#83ffb3",
+                "button_highlight_accent_color": "#c0c7ff"
+            },
+				 -->
+				<tr>
+					<td>colors</td>
+					<td>Specify colors for different components of the popup</td>
+					<td>JSON Object</td>
+					<td>
+						<strong>main_bg</strong>: background color of the popup content<br />
+						<strong>accent_color_primary</strong>: primary color for header, buttons etc.<br />
+						<strong>accent_color_secondary</strong>: secondary color for hover font colors
+						etc.<br />
+						<strong>accent_color_light</strong>: secondary color for inactive/out-of-focus buttons
+						etc.<br />
+						<strong>header_font_color</strong>: font color for header text<br />
+						<strong>snackbar_content_color</strong>: font color for content text of snackbar<br />
+						<strong>snackbar_content_bg</strong>: background color of the snackbar content<br />
+						<strong>snackbar_highlight_content_bg</strong>: background color of the active
+						snackbar content<br />
+						<strong>snackbar_highlight_content_color</strong>: font color of the content text of
+						active snackbar<br />
+						<strong>button_accent_color</strong>: font color of the snackbar action button<br />
+						<strong>toast_bg</strong>: background color of the toast content<br />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						snackbar_active
+					</td>
+					<td>
+						Only for snackbars. If you want to highlight a snackbar to make it look different from other
+						snackbars. A priority snackbar for example.
+					</td>
+					<td>
+						Boolean
+					</td>
+					<td><strong>true</strong> or <strong>false</strong></td>
+				</tr>
+				<tr>
+					<td>
+						icon
+					</td>
+					<td>
+						Only for snackbars currently.If you want to show a small icon at the start of snackbar.
+					</td>
+					<td>
+						String
+					</td>
+					<td>
+						Any font awesome class like "fa-bell"
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<h3 id="credits"><strong>F) Sources and Credits</strong> - <a href="#toc">top</a></h3>
+
+		<p>I've used the following images, icons or other files as listed. Everything else is from scratch and not copied from anywhere.
+
+		<ul>
+			<li>
+				Font Awesome Icons <a
+					href="v4.7.0- https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">Link</a>
+			</li>
+		</ul>
+
+		<hr>
+		<p>
+			The link to demo of this plugin with code generation- <a href="https://symtalha14.github.io/element-popup/">https://symtalha14.github.io/element-popup/</a>
+		</p>
+		<p>Once again, thank you so much for purchasing this plugin. As I said at the beginning, I'd be glad to help you
+			if you have any questions relating to this theme. No guarantees, but I'll do my best to assist. If you have
+			a more general question relating to the themes on ThemeForest, you might consider visiting the forums and
+			asking your question in the "Item Discussion" section.</p>
+
+		<p class="append-bottom alt large"><strong>Syed Mohammad Talha</strong></p>
+		<p><a href="#toc">Go To Table of Contents</a></p>
+
+		<hr class="space">
+	</div><!-- end div .container -->
+</body>
+
+</html>

@@ -1,0 +1,583 @@
+/* 
+    -------------------------------
+    Element PopUp Widget Stylesheet
+    v1.0
+    -------------------------------
+*/
+
+
+
+/* Font Awesome Icons v4.7.0
+-------------------------------------------------------------- */
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+
+
+/* Default root variables
+-------------------------------------------------------------- */
+
+:root {
+    --popup-placement-x: 5%;
+    --popup-placement-y: 95%;
+    --cookie-bar-placement-x: 0;
+    --cookie-bar-placement-y: 98%;
+    --snackbar-placement-x: 98%;
+    --snackbar-placement-y: 95%;
+    --toast-placement-x: 50%;
+    --toast-placement-y: 95%;
+    --toast-translate-x: -50%;
+    --toast-translate-y: -95%;
+    --sb-translate-x: -98%;
+    --sb-translate-y: -95%;
+    --translate-x: -5%;
+    --translate-y: -95%;
+    --cb-translate-x: 0;
+    --cb-translate-y: -98%;
+    --default-width: 476px;
+    --max-width: 600px;
+    --main-bg: #ffffff;
+    --snackbar-width: 360px;
+    --popup-animate-origin: center;
+    --popup-accent-color-primary: #1e1e1e;
+    --popup-accent-color-secondary: #f2f2f2f9;
+    --popup-accent-color-light: rgb(139, 139, 139);
+    --popup-header-font-color: #ffffff;
+    --content-color: #ffffff;
+    --sb-content-color: rgb(255, 255, 255);
+    --sb-content-bg: #3e3d3d;
+    --sb-content-bg-highlight: green;
+    --sb-content-color-highlight: white;
+    --toast-bg: #2d2929;
+    --button-accent-highlight: yellow;
+    --button-accent: #e8e800;
+    --button-width: 80px;
+    --button-hover-opacity: 0.7;
+    --cookie_bar-accent-color-primary: #d2002e;
+    --cookie_bar-accent-color-secondary: #f2f2f2f9;
+    --animation-duration: 500ms;
+    --transition-duration: 400ms
+}
+
+
+
+/* Popup root container 
+-------------------------------------------------------------- */
+
+
+.el_popup,
+.el_cookie_bar,
+.el_snack_bar,
+.el_snack_bar.toast_bar {
+    z-index: 99999;
+}
+
+.el_cookie_bar,
+.el_popup {
+    position: fixed;
+    animation-delay: 0;
+    box-shadow: 0 0 8px 0 rgb(0 0 0 / 51%);
+    overflow: hidden
+}
+
+.el_cookie_bar,
+.el_popup,
+.el_snack_bar {
+    animation-timing-function: ease-in-out;
+    animation-duration: var(--animation-duration);
+    animation-fill-mode: backwards
+}
+
+.el_popup-controls button.btn:hover,
+.el_snack_bar:hover {
+    opacity: .9;
+    cursor: pointer
+}
+
+
+.el_popup {
+    width: var(--default-width);
+    max-width: var(--max-width);
+    height: fit-content;
+    background-color: var(--main-bg);
+    left: var(--popup-placement-x);
+    top: var(--popup-placement-y);
+    right: calc(100% - var(--popup-placement-x));
+    transform: translate(var(--translate-x), var(--translate-y));
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    animation-name: slideUp;
+    transform-origin: var(--popup-animate-origin);
+    transition: .3s ease-in-out
+}
+
+.el_cookie_bar.popup-rounded,
+.el_popup.popup-rounded {
+    border-radius: 15px
+}
+
+/* Popup keyframes- Enter and Exit animations
+-------------------------------------------------------------- */
+
+@keyframes appearPopup {
+    from {
+        height: 0
+    }
+
+    to {
+        height: 225px
+    }
+}
+
+@keyframes appearCookieBar {
+    from {
+        height: 0
+    }
+
+    to {
+        height: 205px
+    }
+}
+
+@keyframes scalePopup {
+    from {
+        opacity: 0;
+        transform: translate(var(--translate-x), var(--translate-y)) scale(.5)
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(var(--translate-x), var(--translate-y)) scale(1)
+    }
+}
+
+@keyframes scalePopupDisappear {
+    from {
+        opacity: 1;
+        transform: translate(var(--translate-x), var(--translate-y)) scale(1)
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(var(--translate-x), var(--translate-y)) scale(.35);
+        display: none
+    }
+}
+
+@keyframes slideUpSnackBar {
+    from {
+        top: 100px
+    }
+
+    to {
+        top: 0
+    }
+}
+
+@keyframes slideDownSnackBar {
+    from {
+        transform: translate(0, -100%)
+    }
+
+    to {
+        transform: translate(0, 25%)
+    }
+}
+
+@keyframes slideUpCookieBar {
+    from {
+        top: calc(100% + var(--cookie-bar-placement-y))
+    }
+
+    to {
+        top: var(--cookie-bar-placement-y)
+    }
+}
+
+@keyframes slideDownCookieBarDisappear {
+    from {
+        top: var(--cookie-bar-placement-y)
+    }
+
+    to {
+        top: calc(100% + var(--cookie-bar-placement-y));
+        display: none
+    }
+}
+
+/* Keyframes end
+-------------------------------------------------------------- */
+
+
+/* Popup header
+-------------------------------------------------------------- */
+
+.el_popup-header {
+    display: grid;
+    grid-template-columns: 90fr 10fr;
+    align-items: center;
+    width: 100%;
+    background: var(--popup-accent-color-primary);
+    color: var(--popup-header-font-color);
+    padding: .5rem .5em .45rem 1rem;
+    box-sizing: border-box
+}
+
+.el_popup-header span {
+    font-weight: bolder;
+    font-size: 1.3rem;
+    font-family: system-ui
+}
+
+
+/* Popup header ends
+-------------------------------------------------------------- */
+
+
+/* Popup content container
+-------------------------------------------------------------- */
+
+.el_popup-content {
+    width: 100%;
+    padding: .8rem .5rem;
+    border-bottom: 1px solid rgba(211, 211, 211, .509);
+    margin-bottom: 3px;
+    box-sizing: border-box;
+    background-color: var(--main-bg)
+}
+
+.el_popup-content p {
+    text-align: justify;
+    padding-right: 2.25%;
+    padding-left: 2.25%;
+    font-family: system-ui;
+    line-height: 1.2em;
+    color: var(--content-color)
+}
+
+/* Popup content container ends
+-------------------------------------------------------------- */
+
+/* Popup controls 
+-------------------------------------------------------------- */
+
+.el_cookie_bar .el_popup-controls,
+.el_popup .el_popup-controls {
+    width: 94%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    padding: 3px 3px 7px;
+    margin-right: 3%;
+    margin-left: 3%;
+    background-color: var(--main-bg)
+}
+
+.el_popup-controls button {
+    margin-right: .66cap
+}
+
+.el_popup-controls button.btn {
+    border: none;
+    padding: .4rem .65rem;
+    text-align: center;
+    font-size: 1.2rem;
+    background-color: transparent;
+    width: var(--button-width)
+}
+
+.el_cookie_bar .el_popup-header i,
+.el_snack_bar .el_popup-controls,
+.el_snack_bar .el_popup-header i,
+.el_snack_bar-action-btn {
+    display: none
+}
+
+.el_popup-controls button.btn.btn-primary__s1:hover {
+    background-color: var(--popup-accent-color-primary);
+    color: var(--popup-accent-color-secondary);
+    border-color: transparent
+}
+
+.el_popup-controls button.btn.btn-primary__s1 {
+    background-color: transparent;
+    color: var(--popup-accent-color-primary);
+    border: 1px solid var(--popup-accent-color-primary)
+}
+
+.el_popup-controls button.btn.btn-secondary__s1 {
+    background: 0 0;
+    color: var(--popup-accent-color-light);
+    border: 1px solid var(--popup-accent-color-light)
+}
+
+.el_popup-controls button.btn.btn-secondary__s1:hover {
+    background-color: var(--popup-accent-color-secondary);
+    color: var(--popup-accent-color-primary);
+    border-color: transparent
+}
+
+.el_popup-controls button.btn.btn-rounded {
+    border-radius: .5rem
+}
+
+/* Popup controls end
+-------------------------------------------------------------- */
+
+/* Cookie bar 
+-------------------------------------------------------------- */
+
+.el_cookie_bar {
+    top: var(--cookie-bar-placement-y);
+    left: var(--cookie-bar-placement-x);
+    width: 98%;
+    margin-left: 1%;
+    margin-right: 1%;
+    background-color: var(--main-bg);
+    font-family: system-ui;
+    transform: translate(var(--cb-translate-x), var(--cb-translate-y));
+    animation-name: slideUpCookieBar;
+    transform-origin: var(--popup-animate-origin);
+    transition: all var(--transition-duration) ease-in-out
+}
+
+.el_cookie_bar .el_cookie_bar-content {
+    padding-left: .8rem;
+    padding-right: .8rem
+}
+
+.el_cookie_bar .el_popup-header {
+    justify-content: flex-start;
+    grid-template-columns: 100fr;
+    padding-top: 1em;
+    padding-bottom: 10px
+}
+
+.el_cookie_bar.popup-rounded .el_popup-header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px
+}
+
+.el_cookie_bar .el_popup-header span {
+    text-align: center
+}
+
+.el_cookie_bar .el_popup-content,
+.el_cookie_bar .el_popup-header {
+    width: 100%
+}
+
+/* Cookie bar ends
+-------------------------------------------------------------- */
+
+i.icon:hover {
+    cursor: pointer;
+    opacity: .95
+}
+
+
+/* Popup responsive
+-------------------------------------------------------------- */
+
+@media only screen and (min-width:861px) {
+    .el_popup {
+        max-width: 500px
+    }
+
+    .el_cookie_bar {
+        max-width: unset
+    }
+}
+
+@media only screen and (max-width:860px) {
+    .el_popup {
+        max-width: 450px
+    }
+
+    .el_cookie_bar .el_popup-content,
+    .el_cookie_bar .el_popup-header {
+        width: unset
+    }
+}
+
+/* Popup responsive styles end
+-------------------------------------------------------------- */
+
+/* Snackbar 
+-------------------------------------------------------------- */
+
+.el_snack_bar {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    animation-name: scaleSnackBar;
+    animation-delay: 0s;
+    transition: .33s ease-in-out
+}
+
+.el_snack_bar .el_popup-header {
+    width: var(--snackbar-width);
+    display: none
+}
+
+.el_snack_bar.toast_bar {
+    position: fixed;
+    animation-name: slideUpToast;
+    top: var(--toast-placement-y);
+    left: var(--toast-placement-x);
+    transform: translate(var(--toast-translate-x), var(--toast-translate-y))
+}
+
+.el_snack_bar .el_popup-content.expand {
+    height: 200px
+}
+
+.el_snack_bar:hover {
+    scale: 0.97
+}
+
+.el_snack_bar.toast_bar:hover {
+    cursor: pointer;
+    opacity: .97;
+    scale: 1
+}
+
+.el_snack_bar.popup-rounded .el_popup-content {
+    border-radius: 7px
+}
+
+.el_snack_bar .el_popup-content {
+    width: var(--snackbar-width);
+    height: 90px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: grid;
+    grid-template-columns: 5fr 88fr 7fr;
+    align-items: center;
+    background-color: var(--sb-content-bg);
+    color: var(--sb-content-color);
+    box-shadow: 0 0 1px 0 #61616187;
+    transition: .5s ease-in-out
+}
+
+.el_snack_bar.toast_bar .el_popup-content {
+    width: var(--snackbar-width);
+    height: fit-content;
+    display: flex;
+    background-color: var(--toast-bg)
+}
+
+.el_snack_bar .el_popup-content i.snackbar-icon {
+    color: var(--button-accent);
+    padding-right: 10px;
+    margin-left: 4px
+}
+
+.el_snack_bar .el_popup-content span.el_snack_bar-action-btn {
+    text-transform: uppercase;
+    font-size: .8rem;
+    font-weight: 700;
+    font-family: system-ui;
+    letter-spacing: .1cap;
+    color: var(--button-accent);
+    display: block;
+    margin-top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    padding-left: 5px
+}
+
+.el_snack_bar .el_popup-content span.el_snack_bar-action-btn:hover {
+    opacity: .7;
+    cursor: pointer
+}
+
+.el_snack_bar .el_popup-content p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: .65rem;
+    text-align: justify;
+    text-wrap: pretty;
+    color: var(--sb-content-color);
+    overflow: hidden;
+    max-height: 70px;
+    line-height: 0.9rem;
+}
+
+
+
+i.snackbar-toast-close {
+    margin-right: 10px;
+    font-size: 1.3rem;
+    font-weight: 700
+}
+
+.snackbar-close:hover,
+i.snackbar-toast-close:hover {
+    cursor: pointer
+}
+
+.el-mwrapper {
+    position: fixed;
+    display: flex;
+    flex-direction: column-reverse;
+    top: var(--snackbar-placement-y);
+    left: var(--snackbar-placement-x);
+    transform: translate(var(--sb-translate-x), var(--sb-translate-y));
+    overflow-y: scroll;
+    max-height: 80vh
+}
+
+.el-mwrapper::-webkit-scrollbar {
+    display: none
+}
+
+.el_snack_bar.sb_highlight .el_popup-content {
+    background: var(--sb-content-bg-highlight)
+}
+
+.el_snack_bar.sb_highlight .el_popup-content p {
+    color: var(--sb-content-color-highlight)
+}
+
+.el_snack_bar.sb_highlight .el_popup-content i.snackbar-icon {
+    color: var(--button-accent-highlight);
+    padding-right: 10px;
+    margin-left: 4px;
+    margin-top: 50%
+}
+
+.el_snack_bar.sb_highlight .el_popup-content .el_snack_bar-action-btn {
+    color: var(--button-accent-highlight)
+}
+
+
+
+span.snackbar_header {
+    display: block;
+    font-weight: bolder;
+    text-align: left;
+    margin: 0 0 4px;
+}
+
+
+span.snackbar_content {
+    font-size: 0.7rem;
+    line-height: 0.7rem;
+}
+
+.el_snack_bar.toast_bar .el_popup-content p{
+    line-height: 0.8rem !important;
+    font-size: 0.8rem !important;
+    margin-top: 0;
+}
+
+/* Snackbar ends
+-------------------------------------------------------------- */
+
+
+
+/* Styles end here */

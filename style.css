@@ -1,6 +1,22 @@
+/* 
+    Element PopUp Live Preview Styling
+*/
+
+* {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h1 {
+    font-weight: bolder;
+    font-family: 'Lato';
+    letter-spacing: 0.1cap;
+    font-size: 3rem;
+}
+
 body {
     background-color: white !important;
     padding-top: 150px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 
@@ -12,15 +28,57 @@ table thead th {
     padding: 10px !important;
 }
 
-select{
+table {
+    border: 1px solid darkgray;
+}
+
+select {
     padding: 10px;
 }
 
-input[type="color"]{
+input[type="color"] {
     width: 30px !important;
     height: 30px !important;
 }
 
 .table-responsive {
     overflow-y: scroll !important;
+}
+
+
+.btn {
+    padding: 7px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin: 5px;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn-default {
+    background-color: rgb(240, 233, 233);
+}
+
+.btn-primary {
+    background-color: rgb(11 108 204);
+    color: #ffffff;
+}
+
+.btn-success {
+    background-color: rgb(3, 136, 63);
+    color: #ffffff;
+}
+
+pre {
+    background-color: whitesmoke;
+}
+
+code {
+    background: transparent;
+    font-family: monospace;
+    color: #414141;
 }

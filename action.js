@@ -82,7 +82,7 @@ var tryElementPopup = (element) => {
     new PopupElement({
         element: '${element}', content: {
             "header_text": "Header Text",
-            "body_text": "loreLorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus officiis corporis sed amet nobis delectus et sit, asperiores iure nulla hic, fuga veniam!"
+            "body_text": "The body content goes here. Replace it with whatever text you want."
         }, settings: {
             colors: {
                 "main_bg": '${main_bg}',
@@ -95,7 +95,14 @@ var tryElementPopup = (element) => {
                 "snackbar_content_bg": '${snackbar_bg_color}',
                 "button_accent_color": '${button_accent_color}',
                 "toast_bg": '${toast_bg_color}'
-            }, animation: { enter: '${animation}', exit: '${animation}', speed:'${speed}' }, rounded_container: ${rounded_corners}, placement: '${placement}', icon: "fa-check", callback_success: () => { }}});`
+            }, animation: { 
+                enter: '${animation}', 
+                exit: '${animation}', 
+                speed:'${speed}' }, 
+                rounded_container: ${rounded_corners}, 
+                placement: '${placement}', 
+                icon: "fa-check", 
+                callback_success: () => { }}});`
 
     document.querySelector("#codeToCopy").style="background:transparent;";
     document.querySelector("#codeToCopy").innerHTML = scriptToCopy;
@@ -103,7 +110,7 @@ var tryElementPopup = (element) => {
     new PopupElement({
         element: element, content: {
             "header_text": "Header Text",
-            "body_text": "loreLorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus officiis corporis sed amet nobis delectus et sit, asperiores iure nulla hic, fuga veniam!"
+            "body_text": "The body content goes here. Replace it with whatever text you want."
         }, settings: {
             colors: {
                 "main_bg": main_bg,
