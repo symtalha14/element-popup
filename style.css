@@ -8,8 +8,8 @@
 
 h1 {
     font-weight: bolder;
-    font-family: 'Lato';
-    letter-spacing: 0.1cap;
+    font-family: 'Lato', monospace;
+    letter-spacing: 0.15cap;
     font-size: 3rem;
 }
 
